@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
@@ -90,7 +90,7 @@ export default function ImageCompressorPage() {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 mb-3"
+              className="flex justify-between items-center bg-white p-4 rounded-lg shadow-sm mb-3"
             >
               <div>
                 <p className="font-semibold">{file.name}</p>
@@ -101,7 +101,7 @@ export default function ImageCompressorPage() {
               </div>
               <button
                 onClick={() => downloadFile(file)}
-                className="px-4 py-2 bg-blue-200 text-blue-700 rounded hover:bg-blue-300"
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               >
                 Download
               </button>
@@ -111,23 +111,11 @@ export default function ImageCompressorPage() {
           {files.length > 1 && (
             <button
               onClick={downloadAll}
-              className="mt-4 px-6 py-2 bg-green-200 text-green-700 rounded hover:bg-green-300"
+              className="mt-4 px-6 py-2 bg-green-500 text-white rounded hover:bg-green-600"
             >
               Download All
             </button>
           )}
-
-          {/* Link Saweria */}
-          <div className="mt-6 text-center">
-            <a
-              href="https://saweria.co/bagas4djie" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-4 py-2 bg-yellow-200 text-yellow-800 rounded hover:bg-yellow-300 transition-colors"
-            >
-              Have a coffee ?
-            </a>
-          </div>
         </div>
       )}
     </div>
