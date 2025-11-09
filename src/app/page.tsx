@@ -71,9 +71,8 @@ export default function ImageCompressorPage() {
 
       <div
         {...getRootProps()}
-        className={`border-2 border-dashed rounded-lg p-12 text-center mx-auto max-w-3xl cursor-pointer ${
-          isDragActive ? "border-blue-500 bg-blue-50" : "border-gray-300"
-        }`}
+        className={`border-2 border-dashed rounded-lg p-12 text-center mx-auto max-w-3xl cursor-pointer ${isDragActive ? "border-blue-500 bg-blue-50" : "border-gray-300"
+          }`}
       >
         <input {...getInputProps()} />
         {isDragActive ? (
@@ -93,7 +92,12 @@ export default function ImageCompressorPage() {
               className="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 mb-3"
             >
               <div>
-                <p className="font-semibold">{file.name}</p>
+                {/* Truncate nama file di mobile/tablet */}
+                <p className="font-semibold">
+                  <span className="block sm:inline truncate max-w-[120px] sm:max-w-full">
+                    {file.name}
+                  </span>
+                </p>
                 <p className="text-sm text-gray-500">
                   {Math.round(file.originalSize / 1024)} KB →{" "}
                   {Math.round(file.compressedSize / 1024)} KB
@@ -108,26 +112,29 @@ export default function ImageCompressorPage() {
             </motion.div>
           ))}
 
-          {files.length > 1 && (
-            <button
-              onClick={downloadAll}
-              className="mt-4 px-6 py-2 bg-green-200 text-green-700 rounded hover:bg-green-300"
-            >
-              Download All
-            </button>
+          {files.length > 0 && (
+            <div className="mt-6 flex flex-row justify-between sm:items-center gap-4">
+              {files.length > 1 && (
+                <button
+                  onClick={downloadAll}
+                  className="px-6 py-2 bg-green-200 text-green-700 rounded hover:bg-green-300"
+                >
+                  Download All
+                </button>
+              )}
+
+              {/* Link Saweria */}
+              <a
+                href="https://saweria.co/bagas4djie"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 bg-yellow-200 text-yellow-700 rounded hover:bg-green-300"
+              >
+                Have a coffee ?
+              </a>
+            </div>
           )}
 
-          {/* Link Saweria */}
-          <div className="mt-6 text-center">
-            <a
-              href="https://saweria.co/bagas4djie" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-4 py-2 bg-yellow-200 text-yellow-800 rounded hover:bg-yellow-300 transition-colors"
-            >
-              Have a coffee ?
-            </a>
-          </div>
         </div>
       )}
     </div>
